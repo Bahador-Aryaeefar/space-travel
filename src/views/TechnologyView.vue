@@ -79,11 +79,14 @@ const technology = computed(() =>
         <div class="grow flex items-center justify-center overflow-hidden">
             <div class="relative w-[32.188rem] h-[32.938rem]">
                 <img class="rounded-xl absolute top-0 left-0 transition-all duration-500"
-                    :class="(state == 1) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Vehicle.jpg" alt="">
+                    :class="(state == 1) ? 'translate-x-0' : 'translate-x-[50rem]  opacity-0'"
+                    src="../assets/Vehicle.jpg" alt="">
                 <img class="rounded-xl absolute top-0 left-0 transition-all duration-500"
-                    :class="(state == 2) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Port.jpg" alt="">
+                    :class="(state == 2) ? 'translate-x-0' : 'translate-x-[50rem]  opacity-0'" src="../assets/Port.jpg"
+                    alt="">
                 <img class="rounded-xl absolute top-0 left-0 transition-all duration-500"
-                    :class="(state == 3) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Capsule.jpg" alt="">
+                    :class="(state == 3) ? 'translate-x-0' : 'translate-x-[50rem]  opacity-0'"
+                    src="../assets/Capsule.jpg" alt="">
             </div>
         </div>
     </div>

@@ -100,28 +100,28 @@ const planet = computed(() =>
             </h5>
             <div class="relative mt-[6.063rem] ml-[3.375rem] w-[27.813rem] h-[27.813rem]">
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
-                    :class="(state == 1) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    :class="(state == 1) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Moon.png" alt="Moon">
                     <div
                         class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">
                     </div>
                 </div>
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
-                    :class="(state == 2) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    :class="(state == 2) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Mars.png" alt="Mars">
                     <div
                         class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">
                     </div>
                 </div>
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
-                    :class="(state == 3) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    :class="(state == 3) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Europa.png" alt="Europa">
                     <div
                         class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">
                     </div>
                 </div>
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
-                    :class="(state == 4) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    :class="(state == 4) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Titan.png" alt="Titan">
                     <div
                         class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">

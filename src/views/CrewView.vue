@@ -78,17 +78,17 @@ const planet = computed(() =>
         <div class="flex-grow flex justify-center items-end overflow-hidden">
             <div class="relative w-[38.5rem] h-full">
                 <img class="absolute bottom-0 left-0 transition-all duration-500"
-                    :class="(state == 1) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Commander.png"
+                    :class="(state == 1) ? 'translate-x-0' : 'translate-x-[50rem] opacity-0'"
+                    src="../assets/Commander.png" alt="Commander">
+                <img class="absolute bottom-0 left-0 transition-all duration-500"
+                    :class="(state == 2) ? 'translate-x-0' : 'translate-x-[50rem] opacity-0'"
+                    src="../assets/Specialist.png" alt="Commander">
+                <img class="absolute bottom-0 left-0 transition-all duration-500"
+                    :class="(state == 3) ? 'translate-x-0' : 'translate-x-[50rem] opacity-0'" src="../assets/Pilot.png"
                     alt="Commander">
                 <img class="absolute bottom-0 left-0 transition-all duration-500"
-                    :class="(state == 2) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Specialist.png"
-                    alt="Commander">
-                <img class="absolute bottom-0 left-0 transition-all duration-500"
-                    :class="(state == 3) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Pilot.png"
-                    alt="Commander">
-                <img class="absolute bottom-0 left-0 transition-all duration-500"
-                    :class="(state == 4) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Engineer.png"
-                    alt="Commander">
+                    :class="(state == 4) ? 'translate-x-0' : 'translate-x-[50rem] opacity-0'"
+                    src="../assets/Engineer.png" alt="Commander">
             </div>
         </div>
     </div>
