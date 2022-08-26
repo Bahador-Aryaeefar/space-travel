@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const loaded = ref(false)
 
@@ -11,6 +11,7 @@ window.addEventListener('load', () =>
 
 const router = useRouter()
 router.push('/')
+
 
 const borderState = ref(1)
 const borderWidth = computed(() =>
@@ -77,6 +78,9 @@ function me()
 </script>
 
 <template>
+  <div class="w-0 h-0 hidden">
+    <img src="./assets/Destination.jpg" alt="">
+  </div>
   <div class="h-[100vh] absolute top-0 left-0 w-full overflow-auto" :style="`background-image: url(${require('./assets/' + backgroundImage + '.jpg')});
   background-repeat: no-repeat;
   background-size: cover;`">
