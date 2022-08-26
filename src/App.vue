@@ -80,6 +80,19 @@ function me()
 <template>
   <div class="w-0 h-0 hidden">
     <img src="./assets/Destination.jpg" alt="">
+    <img src="./assets/Crew.jpg" alt="">
+    <img src="./assets/Technology.jpg" alt="">
+    <img src="./assets/Moon.png" alt="">
+    <img src="./assets/Mars.png" alt="">
+    <img src="./assets/Europa.png" alt="">
+    <img src="./assets/Titan.png" alt="">
+    <img src="./assets/Commander.png" alt="">
+    <img src="./assets/Specialist.png" alt="">
+    <img src="./assets/Pilot.png" alt="">
+    <img src="./assets/Engineer.png" alt="">
+    <img src="./assets/Vehicle.jpg" alt="">
+    <img src="./assets/Port.jpg" alt="">
+    <img src="./assets/Capsule.jpg" alt="">
   </div>
   <div class="h-[100vh] absolute top-0 left-0 w-full overflow-auto" :style="`background-image: url(${require('./assets/' + backgroundImage + '.jpg')});
   background-repeat: no-repeat;
@@ -125,10 +138,37 @@ function me()
     </nav>
     <router-view @explore="me" />
   </div>
-  <div class="h-[100vh] w-full absolute top-0 left-0 bg-space-black z-30" :class="(loaded) ? 'hidden' : ''"></div>
+  <div
+    class="h-[100vh] w-full absolute top-0 left-0 bg-space-black z-30 flex items-center justify-center gap-1 text-[4rem] font-Bellefair text-white waviy"
+    :class="(loaded) ? 'hidden' : ''">
+    <span style="--i:1">L</span>
+    <span style="--i:2">O</span>
+    <span style="--i:3">A</span>
+    <span style="--i:4">D</span>
+    <span style="--i:5">I</span>
+    <span style="--i:6">N</span>
+    <span style="--i:7">G</span>
+  </div>
 </template>
 
 <style>
+.waviy span {
+  animation: waviy 1.8s infinite;
+  animation-delay: calc(.2s * var(--i));
+}
+
+@keyframes waviy {
+
+  20% {
+    transform: translateY(-20px)
+  }
+
+  40% {
+    transform: translateY(0)
+  }
+
+}
+
 #app {}
 
 h1 {
