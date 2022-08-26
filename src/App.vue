@@ -2,6 +2,13 @@
 import { useRouter, useRoute } from 'vue-router'
 import { ref, computed } from 'vue'
 
+const loaded = ref(false)
+
+window.addEventListener('load', () =>
+{
+  loaded.value = true
+})
+
 const router = useRouter()
 router.push('/')
 
@@ -114,6 +121,7 @@ function me()
     </nav>
     <router-view @explore="me" />
   </div>
+  <div class="h-[100vh] w-full absolute top-0 left-0 bg-space-black z-30" :class="(loaded) ? 'hidden' : ''"></div>
 </template>
 
 <style>

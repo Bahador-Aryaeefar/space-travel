@@ -1,7 +1,12 @@
 <script setup>
 import { ref, computed } from "vue"
 
-const state = ref(1)
+const state = ref(0)
+
+setTimeout(() =>
+{
+    state.value = 1
+}, 10);
 
 const commander = {
     title: "COMMANDER ",
@@ -29,7 +34,7 @@ const planet = computed(() =>
 {
     switch (state.value)
     {
-        case 1: {
+        default: {
             return commander
         }
         case 2: {
@@ -38,7 +43,7 @@ const planet = computed(() =>
         case 3: {
             return pilot
         }
-        default: {
+        case 4: {
             return engineer
         }
     }
@@ -70,11 +75,21 @@ const planet = computed(() =>
                     :class="(state == 4) ? '' : 'opacity-[0.17] hover:opacity-50'" @click="state = 4"></li>
             </ul>
         </div>
-        <div class="flex-grow flex justify-center items-end">
-            <img v-if="state == 1" src="../assets/Commander.png" alt="Commander">
-            <img v-if="state == 2" src="../assets/Specialist.png" alt="Commander">
-            <img v-if="state == 3" src="../assets/Pilot.png" alt="Commander">
-            <img v-if="state == 4" src="../assets/Engineer.png" alt="Commander">
+        <div class="flex-grow flex justify-center items-end overflow-hidden">
+            <div class="relative w-[38.5rem] h-full">
+                <img class="absolute bottom-0 left-0 transition-all duration-500"
+                    :class="(state == 1) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Commander.png"
+                    alt="Commander">
+                <img class="absolute bottom-0 left-0 transition-all duration-500"
+                    :class="(state == 2) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Specialist.png"
+                    alt="Commander">
+                <img class="absolute bottom-0 left-0 transition-all duration-500"
+                    :class="(state == 3) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Pilot.png"
+                    alt="Commander">
+                <img class="absolute bottom-0 left-0 transition-all duration-500"
+                    :class="(state == 4) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Engineer.png"
+                    alt="Commander">
+            </div>
         </div>
     </div>
 </template>

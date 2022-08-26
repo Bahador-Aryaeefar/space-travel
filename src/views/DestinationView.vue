@@ -1,13 +1,18 @@
 <script setup>
 import { ref, computed } from "vue"
 
-const state = ref(1)
+const state = ref(0)
+
+setTimeout(() =>
+{
+    state.value = 1
+}, 10);
 
 const borderWidth = computed(() =>
 {
     switch (state.value)
     {
-        case 1: {
+        default: {
             return 2.85
         }
         case 2: {
@@ -16,7 +21,7 @@ const borderWidth = computed(() =>
         case 3: {
             return 4.05
         }
-        default: {
+        case 4: {
             return 3
         }
     }
@@ -25,7 +30,7 @@ const borderLeft = computed(() =>
 {
     switch (state.value)
     {
-        case 1: {
+        default: {
             return 0
         }
         case 2: {
@@ -34,7 +39,7 @@ const borderLeft = computed(() =>
         case 3: {
             return 10
         }
-        default: {
+        case 4: {
             return 16.28
         }
     }
@@ -69,7 +74,7 @@ const planet = computed(() =>
 {
     switch (state.value)
     {
-        case 1: {
+        default: {
             return moon
         }
         case 2: {
@@ -78,7 +83,7 @@ const planet = computed(() =>
         case 3: {
             return europa
         }
-        default: {
+        case 4: {
             return titan
         }
     }
@@ -93,10 +98,36 @@ const planet = computed(() =>
                 <span class="text-white font-bold opacity-[0.25] mr-4">01</span>
                 PICK YOUR DESTINATION
             </h5>
-            <img v-if="state == 1" class="mt-[6.063rem] ml-[3.375rem]" src="../assets/Moon.png" alt="Moon">
-            <img v-if="state == 2" class="mt-[6.063rem] ml-[3.375rem]" src="../assets/Mars.png" alt="Mars">
-            <img v-if="state == 3" class="mt-[6.063rem] ml-[3.375rem]" src="../assets/Europa.png" alt="Europa">
-            <img v-if="state == 4" class="mt-[6.063rem] ml-[3.375rem]" src="../assets/Titan.png" alt="Titan">
+            <div class="relative mt-[6.063rem] ml-[3.375rem] w-[27.813rem] h-[27.813rem]">
+                <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
+                    :class="(state == 1) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    <img class="rotating" src="../assets/Moon.png" alt="Moon">
+                    <div
+                        class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">
+                    </div>
+                </div>
+                <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
+                    :class="(state == 2) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    <img class="rotating" src="../assets/Mars.png" alt="Mars">
+                    <div
+                        class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">
+                    </div>
+                </div>
+                <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
+                    :class="(state == 3) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    <img class="rotating" src="../assets/Europa.png" alt="Europa">
+                    <div
+                        class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">
+                    </div>
+                </div>
+                <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
+                    :class="(state == 4) ? 'translate-x-0' : '-translate-x-[50rem]'">
+                    <img class="rotating" src="../assets/Titan.png" alt="Titan">
+                    <div
+                        class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black">
+                    </div>
+                </div>
+            </div>
         </div>
         <div>
             <ul class="flex gap-[2.25rem] text-lg font-normal text-space-blue leading-[1.2rem] font-Condensed h-[2.125rem] mt-[6.125rem] relative"
@@ -141,3 +172,21 @@ const planet = computed(() =>
         </div>
     </div>
 </template>
+
+<style>
+.rotating {
+    animation: spin 60s linear infinite;
+}
+
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+</style>

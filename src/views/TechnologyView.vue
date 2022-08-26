@@ -1,7 +1,12 @@
 <script setup>
 import { ref, computed } from "vue"
 
-const state = ref(1)
+const state = ref(0)
+
+setTimeout(() =>
+{
+    state.value = 1
+}, 10);
 
 const vehicle = {
     title: "LAUNCH VEHICLE",
@@ -21,13 +26,13 @@ const technology = computed(() =>
 {
     switch (state.value)
     {
-        case 1: {
+        default: {
             return vehicle
         }
         case 2: {
             return port
         }
-        default: {
+        case 3: {
             return capsule
         }
     }
@@ -71,10 +76,15 @@ const technology = computed(() =>
                 </div>
             </div>
         </div>
-        <div class="grow flex items-center justify-center">
-            <img v-if="state == 1" class="rounded-xl" src="../assets/Vehicle.jpg" alt="">
-            <img v-else-if="state == 2" class="rounded-xl" src="../assets/Port.jpg" alt="">
-            <img v-else class="rounded-xl" src="../assets/Capsule.jpg" alt="">
+        <div class="grow flex items-center justify-center overflow-hidden">
+            <div class="relative w-[32.188rem] h-[32.938rem]">
+                <img class="rounded-xl absolute top-0 left-0 transition-all duration-500"
+                    :class="(state == 1) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Vehicle.jpg" alt="">
+                <img class="rounded-xl absolute top-0 left-0 transition-all duration-500"
+                    :class="(state == 2) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Port.jpg" alt="">
+                <img class="rounded-xl absolute top-0 left-0 transition-all duration-500"
+                    :class="(state == 3) ? 'translate-x-0' : 'translate-x-[50rem]'" src="../assets/Capsule.jpg" alt="">
+            </div>
         </div>
     </div>
 </template>
