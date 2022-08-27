@@ -2,6 +2,10 @@
 module.exports = {
   content: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      'tablet': { 'max': '1330px' },
+      'mobile': { 'min': '360px', 'max': '424px' }
+    },
     extend: {
       colors: {
         'space': {
