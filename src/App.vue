@@ -106,7 +106,7 @@ const hamburger = ref(false)
     <img src="./assets/mobile-crew.jpg" alt="">
     <img src="./assets/mobile-technology.jpg" alt="">
   </div>
-  <div class="h-[100vh] absolute top-0 left-0 w-full overflow-auto" :class="backgroundImage">
+  <div class="h-[100vh] absolute top-0 left-0 w-full overflow-auto" :class="backgroundImage" @click="hamburger = false">
     <nav class="mx-auto w-full max-w-[100rem] flex justify-between items-center h-[6rem] pl-[3.438rem] mt-10 relative
     tablet:mt-0 tablet:pl-10
     mobile:p-0">
@@ -119,13 +119,13 @@ const hamburger = ref(false)
       </svg>
 
       <div class="w-6 h-[1.313rem] flex-col justify-between mr-6 z-[95] cursor-pointer hidden mobile:flex"
-        @click="hamburger = !hamburger">
+        :class="(hamburger) ? 'fixed right-0 top-6' : ''" @click.stop="hamburger = !hamburger">
         <div class="w-full h-[3px] bg-space-blue transition-all origin-top-left"
-          :class="(hamburger) ? 'rotate-45 translate-y-[0.7px]' : ''">
+          :class="(hamburger) ? 'rotate-45 w-[1.68rem]' : ''">
         </div>
         <div class="w-full h-[3px] bg-space-blue" :class="(hamburger) ? 'opacity-0' : ''"></div>
         <div class="w-full h-[3px] bg-space-blue transition-all origin-bottom-left"
-          :class="(hamburger) ? '-rotate-45 -translate-y-[0.7px]' : ''"></div>
+          :class="(hamburger) ? '-rotate-45  w-[1.68rem]' : ''"></div>
       </div>
 
       <div class="h-full bg-[rgba(255,255,255,0.04)] w-[calc(100%-3rem)] max-w-[51.875rem] pr-[1.313rem] backdrop-blur-[81.5485px] text-lg font-normal text-white leading-[1.2rem] font-Condensed flex justify-center space
@@ -159,22 +159,26 @@ const hamburger = ref(false)
       </div>
     </nav>
     <router-view @explore="explore" />
-    <div :class="(hamburger) ? 'translate-x-0' : 'translate-x-[15.875rem]'"
-      class="transition-all pl-8 pt-[7.375rem] space-y-8 w-[15.875rem] h-full bg-[rgba(255,255,255,0.04)] fixed right-0 top-0 z-[90] backdrop-blur-[5.097rem] text-white text-base font-normal font-Condensed leading-[1.2rem] hidden mobile:block"
+    <div :class="(hamburger) ? 'translate-x-0' : 'translate-x-full'"
+      class="transition-all pl-8 pt-[7.375rem] space-y-8 w-[60%] h-full bg-[rgba(255,255,255,0.04)] fixed right-0 top-0 z-[90] backdrop-blur-[5.097rem] text-white text-base font-normal font-Condensed leading-[1.2rem] hidden mobile:block"
       style="letter-spacing: 0.169rem;">
-      <router-link to="/" @click="borderState = 1" class="block">
+      <router-link to="/" @click="borderState = 1" class="flex items-center gap-3 h-[31px]"
+        :class="(borderState == 1) ? 'border-r-[5px] border-white' : ''">
         <span class="font-bold">00</span>
         HOME
       </router-link>
-      <router-link to="/destination" @click="borderState = 2" class="block">
+      <router-link to="/destination" @click="borderState = 2" class="flex items-center gap-3 h-[31px]"
+        :class="(borderState == 2) ? 'border-r-[5px] border-white' : ''">
         <span class="font-bold">01</span>
         DESTINATION
       </router-link>
-      <router-link to="/crew" @click="borderState = 3" class="block">
+      <router-link to="/crew" @click="borderState = 3" class="flex items-center gap-3 h-[31px]"
+        :class="(borderState == 3) ? 'border-r-[5px] border-white' : ''">
         <span class="font-bold">02</span>
         CREW
       </router-link>
-      <router-link to="/technology" @click="borderState = 4" class="block">
+      <router-link to="/technology" @click="borderState = 4" class="flex items-center gap-3 h-[31px]"
+        :class="(borderState == 4) ? 'border-r-[5px] border-white' : ''">
         <span class="font-bold">03</span>
         TECHNOLOGY
       </router-link>
