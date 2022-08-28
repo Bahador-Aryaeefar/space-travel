@@ -13,16 +13,16 @@ const borderWidth = computed(() =>
     switch (state.value)
     {
         default: {
-            return 2.85
+            return "w-[2.85rem] mobile:w-[2.4rem]"
         }
         case 2: {
-            return 2.75
+            return "w-[2.75rem] mobile:w-[2.3rem]"
         }
         case 3: {
-            return 4.05
+            return "w-[4.05rem] mobile:w-[3.35rem]"
         }
         case 4: {
-            return 3
+            return "w-[3rem] mobile:w-[2.55rem]"
         }
     }
 })
@@ -31,16 +31,16 @@ const borderLeft = computed(() =>
     switch (state.value)
     {
         default: {
-            return 0
+            return "left-0"
         }
         case 2: {
-            return 5.1
+            return "left-[5.1rem] mobile:left-[3.8rem]"
         }
         case 3: {
-            return 10
+            return "left-[10rem] mobile:left-[7.6rem]"
         }
         case 4: {
-            return 16.28
+            return "left-[16.28rem] mobile:left-[12.4rem]"
         }
     }
 })
@@ -93,49 +93,55 @@ const planet = computed(() =>
 
 <template>
     <div class="flex justify-between w-full max-w-[100rem] mx-auto pl-[10.375rem] pr-[10.188rem] mt-[4.75rem] mb-[7rem]
-        tablet:flex-col tablet:items-center tablet:mt-10 tablet:px-0">
+        tablet:flex-col tablet:items-center tablet:mt-10 tablet:px-0 mobile:mt-6">
         <div class="w-full">
-            <h5 class="text-white tablet:ml-[2.5rem]">
+            <h5 class="text-white tablet:ml-[2.5rem] mobile:text-center mobile:m-0">
                 <span class="text-white font-bold opacity-[0.25] mr-4">01</span>
                 PICK YOUR DESTINATION
             </h5>
             <div class="relative mt-[6.063rem] ml-[3.375rem] w-[27.813rem] h-[27.813rem]
-            tablet:w-[18.75rem] tablet:h-[18.75rem] tablet:mx-auto">
+            tablet:w-[18.75rem] tablet:h-[18.75rem] tablet:mx-auto
+            mobile:w-[10.625rem] mobile:h-[10.625rem] mobile:mt-8">
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
                     :class="(state == 1) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Moon.png" alt="Moon">
                     <div class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black
-                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]">
+                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]
+                        mobile:-top-[7rem] mobile:-left-[7rem]">
                     </div>
                 </div>
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
                     :class="(state == 2) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Mars.png" alt="Mars">
                     <div class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black
-                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]">
+                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]
+                        mobile:-top-[7rem] mobile:-left-[7rem]">
                     </div>
                 </div>
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
                     :class="(state == 3) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Europa.png" alt="Europa">
                     <div class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black
-                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]">
+                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]
+                        mobile:-top-[7rem] mobile:-left-[7rem]">
                     </div>
                 </div>
                 <div class="absolute top-0 left-0 transition-all duration-500 overflow-hidden rounded-full"
                     :class="(state == 4) ? 'translate-x-0' : '-translate-x-[50rem]  opacity-0'">
                     <img class="rotating" src="../assets/Titan.png" alt="Titan">
                     <div class="absolute top-[2rem] left-[0.5rem] w-[60rem] h-[60rem] blur-[4rem] rounded-full bg-space-black
-                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]">
+                        tablet:-top-[4.5rem] tablet:-left-[4.5rem]
+                        mobile:-top-[7rem] mobile:-left-[7rem]">
                     </div>
                 </div>
             </div>
         </div>
         <div class="tablet:max-w-[35.813rem] tablet:w-[90%]">
             <ul class="flex gap-x-[2.25rem] text-lg font-normal text-space-blue leading-[1.2rem] font-Condensed h-[2.125rem] mt-[6.125rem] relative
-            tablet:mt-[3.25rem] tablet:mx-auto tablet:w-fit" style="letter-spacing: 0.169rem">
-                <div class="absolute bottom-0 h-[3px] bg-white transition-all"
-                    :style="`width: ${borderWidth}rem; left: ${borderLeft}rem;`"></div>
+            tablet:mt-[3.25rem] tablet:mx-auto tablet:w-fit
+            mobile:text-sm mobile:gap-6 mobile:mt-6 mobile:h-[1.75rem]" style="letter-spacing: 0.169rem">
+                <div class="absolute bottom-0 h-[3px] bg-white transition-all" :class="`${borderWidth} ${borderLeft}`">
+                </div>
                 <li @click="state = 1" :class="(state == 1) ? 'text-white' : ''"
                     class="cursor-pointer relative after:h-[3px] after:w-full after:bg-white after:absolute after:bottom-0 after:left-0 after:opacity-0 hover:after:opacity-50">
                     MOON</li>
@@ -149,15 +155,18 @@ const planet = computed(() =>
                     class="cursor-pointer relative after:h-[3px] after:w-full after:bg-white after:absolute after:bottom-0 after:left-0 after:opacity-0 hover:after:opacity-50">
                     TITAN</li>
             </ul>
-            <h2 class="mt-[2.313rem] text-white tablet:text-center tablet:mt-8">
+            <h2 class="mt-[2.313rem] text-white tablet:text-center tablet:mt-8 mobile:mt-5">
                 {{ planet.title }}
             </h2>
             <p class="mt-[0.875rem] w-[27.75rem] font-Barlow font-normal text-lg leading-[2rem] text-space-blue
-            tablet:text-center tablet:text-base tablet:leading-[1.75rem] tablet:mt-1 tablet:w-full">
+            tablet:text-center tablet:text-base tablet:leading-[1.75rem] tablet:mt-1 tablet:w-full
+            mobile:text-[0.938rem] mobile:leading-[1.563rem]">
                 {{ planet.info }}
             </p>
-            <hr class="mt-[3.375rem] border-t-[1px] border-[#383B4B] tablet:mt-[3.125rem]" />
-            <ul class="mt-[1.75rem] font-normal flex gap-[5rem] tablet:justify-center tablet:text-center">
+            <hr class="mt-[3.375rem] border-t-[1px] border-[#383B4B] tablet:mt-[3.125rem] mobile:mt-8" />
+            <ul class="mt-[1.75rem] font-normal flex gap-x-[5rem] 
+            tablet:justify-center tablet:text-center
+            mobile:flex-col mobile:gap-y-8">
                 <li>
                     <div class="text-sm leading-[1.05rem] text-space-blue font-Condensed"
                         style="letter-spacing: 0.148rem">AVG.

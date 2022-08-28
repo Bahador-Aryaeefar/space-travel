@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     screens: {
       'tablet': { 'max': '1330px' },
-      'mobile': { 'min': '360px', 'max': '424px' }
+      'mobile': { 'max': '670px' }
     },
     extend: {
       colors: {

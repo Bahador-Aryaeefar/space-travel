@@ -12,7 +12,6 @@ window.addEventListener('load', () =>
 const router = useRouter()
 router.push('/')
 
-
 const borderState = ref(1)
 const borderWidth = computed(() =>
 {
@@ -75,6 +74,8 @@ function explore()
   router.push("/destination")
 }
 
+
+const hamburger = ref(false)
 </script>
 
 <template>
@@ -100,21 +101,37 @@ function explore()
     <img src="./assets/mobile-vehicle.jpg" alt="">
     <img src="./assets/mobile-port.jpg" alt="">
     <img src="./assets/mobile-capsule.jpg" alt="">
+    <img src="./assets/mobile-home.jpg" alt="">
+    <img src="./assets/mobile-destination.jpg" alt="">
+    <img src="./assets/mobile-crew.jpg" alt="">
+    <img src="./assets/mobile-technology.jpg" alt="">
   </div>
   <div class="h-[100vh] absolute top-0 left-0 w-full overflow-auto" :class="backgroundImage">
     <nav class="mx-auto w-full max-w-[100rem] flex justify-between items-center h-[6rem] pl-[3.438rem] mt-10 relative
-    tablet:mt-0 tablet:pl-10">
+    tablet:mt-0 tablet:pl-10
+    mobile:p-0">
       <div class="h-[2px] w-[50%] absolute top-[50%] left-[10.438rem] bg-white opacity-[0.25] tablet:hidden"></div>
 
-      <svg class="w-12 h-12 relative" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="w-12 h-12 relative mobile:ml-6" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="24" r="24" fill="white" />
         <path fill-rule="evenodd" clip-rule="evenodd"
           d="M24 0C24 0 24 24 0 24C23.5776 24.1714 24 48 24 48C24 48 24 24 48 24C24 24 24 0 24 0Z" fill="#0B0D17" />
       </svg>
 
+      <div class="w-6 h-[1.313rem] flex-col justify-between mr-6 z-[95] cursor-pointer hidden mobile:flex"
+        @click="hamburger = !hamburger">
+        <div class="w-full h-[3px] bg-space-blue transition-all origin-top-left"
+          :class="(hamburger) ? 'rotate-45 translate-y-[0.7px]' : ''">
+        </div>
+        <div class="w-full h-[3px] bg-space-blue" :class="(hamburger) ? 'opacity-0' : ''"></div>
+        <div class="w-full h-[3px] bg-space-blue transition-all origin-bottom-left"
+          :class="(hamburger) ? '-rotate-45 -translate-y-[0.7px]' : ''"></div>
+      </div>
+
       <div class="h-full bg-[rgba(255,255,255,0.04)] w-[calc(100%-3rem)] max-w-[51.875rem] pr-[1.313rem] backdrop-blur-[81.5485px] text-lg font-normal text-white leading-[1.2rem] font-Condensed flex justify-center space
       after:h-[2px] after:w-[50px] after:absolute after:top-[50%] after:left-0 after:bg-white after:opacity-[0.25]
-      tablet:text-sm tablet:w-fit tablet:px-12 tablet:after:w-0">
+      tablet:text-sm tablet:w-fit tablet:px-12 tablet:after:w-0
+      mobile:hidden">
         <div class="flex gap-[3.125rem] h-full relative tablet:gap-[2.25rem]">
           <div class="h-[3px] absolute bottom-0 bg-white transition-all" :class="`${borderWidth} ${borderLeft}`">
           </div>
@@ -142,9 +159,29 @@ function explore()
       </div>
     </nav>
     <router-view @explore="explore" />
+    <div :class="(hamburger) ? 'translate-x-0' : 'translate-x-[15.875rem]'"
+      class="transition-all pl-8 pt-[7.375rem] space-y-8 w-[15.875rem] h-full bg-[rgba(255,255,255,0.04)] fixed right-0 top-0 z-[90] backdrop-blur-[5.097rem] text-white text-base font-normal font-Condensed leading-[1.2rem] hidden mobile:block"
+      style="letter-spacing: 0.169rem;">
+      <router-link to="/" @click="borderState = 1" class="block">
+        <span class="font-bold">00</span>
+        HOME
+      </router-link>
+      <router-link to="/destination" @click="borderState = 2" class="block">
+        <span class="font-bold">01</span>
+        DESTINATION
+      </router-link>
+      <router-link to="/crew" @click="borderState = 3" class="block">
+        <span class="font-bold">02</span>
+        CREW
+      </router-link>
+      <router-link to="/technology" @click="borderState = 4" class="block">
+        <span class="font-bold">03</span>
+        TECHNOLOGY
+      </router-link>
+    </div>
   </div>
   <div
-    class="h-[100vh] w-full absolute top-0 left-0 bg-space-black z-30 flex items-center justify-center gap-1 text-[4rem] font-Bellefair text-white waviy"
+    class="h-[100vh] w-full absolute top-0 left-0 bg-space-black z-[100] flex items-center justify-center gap-1 text-[4rem] font-Bellefair text-white waviy"
     :class="(loaded) ? 'hidden' : ''">
     <span style="--i:1">L</span>
     <span style="--i:2">O</span>
@@ -157,6 +194,10 @@ function explore()
 </template>
 
 <style>
+body {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
 .home {
   background-image: url('./assets/Home.jpg');
   background-repeat: no-repeat;
@@ -262,12 +303,6 @@ h5 {
     letter-spacing: 0.148rem;
   }
 
-  h5 {
-    font-size: 1.25rem !important;
-    line-height: 1.5rem !important;
-    letter-spacing: 0.211rem;
-  }
-
   h1 {
     line-height: 9.375rem !important;
   }
@@ -285,6 +320,56 @@ h5 {
   h4 {
     font-size: 1.5rem !important;
     line-height: 1.719rem !important;
+  }
+
+  h5 {
+    font-size: 1.25rem !important;
+    line-height: 1.5rem !important;
+    letter-spacing: 0.211rem;
+  }
+}
+
+@media(max-width: 670px) {
+  .home {
+    background-image: url('./assets/mobile-home.jpg');
+  }
+
+  .destination {
+    background-image: url('./assets/mobile-destination.jpg');
+  }
+
+  .crew {
+    background-image: url('./assets/mobile-crew.jpg');
+  }
+
+  .technology {
+    background-image: url('./assets/mobile-technology.jpg');
+  }
+
+  h1 {
+    font-size: 5rem !important;
+    line-height: 6.25rem !important;
+  }
+
+  h2 {
+    font-size: 3.5rem !important;
+    line-height: 4.011rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+    line-height: 1.719rem !important;
+  }
+
+  h4 {
+    font-size: 1rem !important;
+    line-height: 1.146rem !important;
+  }
+
+  h5 {
+    font-size: 1rem !important;
+    line-height: 1.2rem !important;
+    letter-spacing: 0.169rem;
   }
 }
 </style>
